@@ -29,7 +29,7 @@ type ClassProps = {
 
 type StateProps = {
   error?: string | null
-  [key: string]: any | null
+  [key: string]: any
   entry: {
     id?: number
     title: string

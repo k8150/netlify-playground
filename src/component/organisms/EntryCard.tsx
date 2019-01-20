@@ -51,8 +51,7 @@ const component: React.SFC<Props> = (props: Props) => {
     <Card className={classes.card}>
       <CardActionArea
         className={classes.entryCardActionArea}
-        component={Link}
-        to={url}
+        component={({ innerRef, ...props }) => <Link {...props} to={url} />}
       >
         <CardMedia
           className={classes.media}

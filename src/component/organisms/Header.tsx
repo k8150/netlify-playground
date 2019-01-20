@@ -18,8 +18,7 @@ const styles = {
 
 type Props = {
   classes: {
-    appBar: string
-    title: string
+    [key: string]: string
   }
 }
 
@@ -39,8 +38,7 @@ const component: React.SFC<Props> = (props: Props) => {
             className={classes.title}
             variant="title"
             color="inherit"
-            component={Link}
-            to="/"
+            component={({ innerRef, ...props }) => <Link {...props} to="/" />}
           >
             K/8150
           </Typography>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles, WithStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import IconLabel from '../molecules/IconLabel'
 
@@ -22,8 +22,7 @@ const styles = {
 
 type Props = {
   classes: {
-    footer: string
-    container: string
+    [key: string]: string
   }
 }
 
