@@ -22,16 +22,26 @@ export interface RecieveFetchAction extends Action {
   payload: RecieveFetchPayload
 }
 
+export type RecieveFetchEntryPayload = {
+  [key: string]: string
+}
+
+export interface RecieveFetchEntryAction extends Action {
+  type: 'RECIEVE_FETCH_ENTRY'
+  payload: RecieveFetchEntryPayload
+}
+
 export type ApiActions = StartFetchAction &
   FailureFetchAction &
-  RecieveFetchAction
+  RecieveFetchAction &
+  RecieveFetchEntryAction
 
-export type ApiState = {
+export type GetAllEntriesState = {
   onFetch: boolean
   error?: string
-  data: [
+  entries: [
     {
-      id: number
+      id?: number
       title: string
       title_image_url: string
       content: string
@@ -40,4 +50,18 @@ export type ApiState = {
     }
   ]
   onLoad: () => void
+}
+
+export type GetEntryState = {
+  onFetch: boolean
+  error?: string
+  entry: {
+    id?: number
+    title: string
+    title_image_url: string
+    content: string
+    created_at: Date
+    updated_at: Date
+  }
+  onLoad: (entryId: number) => void
 }

@@ -1,14 +1,16 @@
-import { ApiState, ApiActions } from './Api'
+import { GetAllEntriesState, GetEntryState, ApiActions } from './Api'
 
 export {
   FailureFetchPayload,
   RecieveFetchPayload,
   ApiActions,
-  ApiState
+  GetAllEntriesState,
+  GetEntryState
 } from './Api'
 
 export type RootState = {
-  api: ApiState
+  getAllEntries: GetAllEntriesState
+  getEntry: GetEntryState
 }
 
 export type RootActions = ApiActions

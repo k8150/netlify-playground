@@ -2,8 +2,12 @@ import * as React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk, { ThunkMiddleware } from 'redux-thunk'
 import { Provider } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import { RootState, RootActions, rootReducer } from './modules'
 import Main from './component/pages/Main'
+import Entry from './component/pages/Entry'
+import About from './component/pages/About'
 
 const store = createStore<RootState, RootActions, {}, {}>(
   rootReducer,
@@ -12,9 +16,15 @@ const store = createStore<RootState, RootActions, {}, {}>(
 
 const component: React.SFC = () => {
   return (
-    <Provider store={store}>
-      <Main />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <CssBaseline>
+          <Route exact path="/" component={Main} />
+          <Route path="/entry/:entryId" component={Entry} />
+          <Route path="/about" component={About} />
+        </CssBaseline>
+      </Provider>
+    </BrowserRouter>
   )
 }
 

@@ -1,7 +1,8 @@
-import { getData } from './Api'
+import { getAllEntries, getEntry } from './Api'
 
 export const actionCreator = {
   api: {
-    getData
+    getAllEntries,
+    getEntry
   }
 }

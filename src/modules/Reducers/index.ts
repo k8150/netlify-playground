@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
 import { RootState, RootActions } from '../Types'
-import { apiReducer } from './Api'
+import { getAllEntriesReducer, getEntryReducer } from './Api'
 
 export const rootReducer = combineReducers<RootState, RootActions>({
-  api: apiReducer
+  getAllEntries: getAllEntriesReducer,
+  getEntry: getEntryReducer
 })

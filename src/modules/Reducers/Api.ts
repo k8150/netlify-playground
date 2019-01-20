@@ -1,12 +1,17 @@
-import { ApiState, ApiActions } from '../Types'
-import { number } from 'prop-types'
+import { GetAllEntriesState, GetEntryState, ApiActions } from '../Types'
 
-export const apiReducer = (
-  state: ApiState = {
+/**
+ * 記事一覧取得Reducer
+ *
+ * @param state
+ * @param action
+ */
+export const getAllEntriesReducer = (
+  state: GetAllEntriesState = {
     onFetch: false,
-    data: [
+    entries: [
       {
-        id: 0,
+        id: undefined,
         title: '',
         title_image_url: '',
         content: '',
@@ -30,7 +35,48 @@ export const apiReducer = (
     case 'RECIEVE_FETCH':
       return Object.assign({}, state, {
         onFetch: false,
-        data: action.payload,
+        entries: action.payload,
+        error: null
+      })
+    default:
+      return state
+  }
+}
+
+/**
+ * 記事取得Reducer
+ *
+ * @param state
+ * @param action
+ */
+export const getEntryReducer = (
+  state: GetEntryState = {
+    onFetch: false,
+    entry: {
+      id: undefined,
+      title: '',
+      title_image_url: '',
+      content: '',
+      created_at: new Date(),
+      updated_at: new Date()
+    },
+    error: '',
+    onLoad: (entryId: number) => {}
+  },
+  action: ApiActions
+) => {
+  switch (action.type) {
+    case 'START_FETCH':
+      return Object.assign({}, state, { onFetch: true })
+    case 'FAILURE_FETCH':
+      return Object.assign({}, state, {
+        onFetch: false,
+        error: action.payload.message
+      })
+    case 'RECIEVE_FETCH_ENTRY':
+      return Object.assign({}, state, {
+        onFetch: false,
+        entry: action.payload,
         error: null
       })
     default:

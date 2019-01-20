@@ -1,10 +1,13 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+import SvgIcon from '@material-ui/core/SvgIcon'
+import IconLabel from '../molecules/IconLabel'
 
 // TODO:
 const styles = {
@@ -24,7 +27,7 @@ type Props = {
     [key: string]: string
   }
   entry: {
-    id: number
+    id?: number
     title: string
     title_image_url: string
     content: string
@@ -41,22 +44,26 @@ type Props = {
  */
 const component: React.SFC<Props> = (props: Props) => {
   const { classes, entry } = props
+  // const createdAt = entry.created_at.toISOString()
+  const url = `/entry/${entry.id}`
+
   return (
     <Card className={classes.card}>
-      <CardActionArea className={classes.entryCardActionArea}>
+      <CardActionArea
+        className={classes.entryCardActionArea}
+        component={Link}
+        to={url}
+      >
         <CardMedia
           className={classes.media}
           image={entry.title_image_url}
           title=""
         />
         <CardContent>
-          <Typography variant="subheading" color="textSecondary">
-            {entry.created_at}
-          </Typography>
+          <IconLabel iconType="access_time" label={'9999-12-31 00:00:00'} />
           <Typography variant="headline" component="h2">
             {entry.title}
           </Typography>
-          <Typography component="p">{entry.content}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>
