@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles, WithStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import IconLabel from '../molecules/IconLabel'
 
@@ -22,8 +22,7 @@ const styles = {
 
 type Props = {
   classes: {
-    footer: string
-    container: string
+    [key: string]: string
   }
 }
 
@@ -41,9 +40,9 @@ const component: React.SFC<Props> = (props: Props) => {
   return (
     <CssBaseline>
       <footer className={classes.footer}>
-        <div className={classes.container}>
+        <small className={classes.container}>
           <IconLabel label={copyrightLabel} iconType="copyright" />
-        </div>
+        </small>
       </footer>
     </CssBaseline>
   )
