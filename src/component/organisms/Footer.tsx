@@ -40,9 +40,9 @@ const component: React.SFC<Props> = (props: Props) => {
   return (
     <CssBaseline>
       <footer className={classes.footer}>
-        <div className={classes.container}>
+        <small className={classes.container}>
           <IconLabel label={copyrightLabel} iconType="copyright" />
-        </div>
+        </small>
       </footer>
     </CssBaseline>
   )
