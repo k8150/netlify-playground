@@ -10,13 +10,13 @@ const styles = {
     margin: '24px auto 0 auto',
     width: '100%',
     height: '256px',
-    backgroundColor: '#CFD8DC',
-    userSelect: 'none'
+    backgroundColor: '#CFD8DC'
+    // userSelect: 'none'
   },
   container: {
     width: '1024px',
-    margin: 'auto',
-    textAlign: 'center'
+    margin: 'auto'
+    // textAlign: 'center'
   }
 }
 
