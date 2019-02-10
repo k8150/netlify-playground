@@ -1,24 +1,26 @@
 import * as React from 'react'
-import { withStyles, WithStyles } from '@material-ui/core/styles'
+import { withStyles, WithStyles, createStyles } from '@material-ui/core/styles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import IconLabel from '../molecules/IconLabel'
 
 // TODO:
-const styles = {
-  footer: {
-    display: 'flex',
-    margin: '24px auto 0 auto',
-    width: '100%',
-    height: '256px',
-    backgroundColor: '#CFD8DC'
-    // userSelect: 'none'
-  },
-  container: {
-    width: '1024px',
-    margin: 'auto'
-    // textAlign: 'center'
-  }
-}
+const styles = (theme: Theme) =>
+  createStyles({
+    footer: {
+      display: 'flex',
+      margin: '24px auto 0 auto',
+      width: '100%',
+      height: '256px',
+      backgroundColor: '#CFD8DC',
+      userSelect: 'none'
+    },
+    container: {
+      width: '1024px',
+      margin: 'auto',
+      textAlign: 'center'
+    }
+  })
 
 type Props = {
   classes: {
