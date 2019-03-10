@@ -53,7 +53,7 @@ type Props = {
  */
 const component: React.SFC<Props> = (props: Props) => {
   const { classes, entry } = props
-  // const createdAt = entry.created_at.toISOString()
+  const createdAt = entry.created_at.toISOString()
   const url = `/entry/${entry.id}`
 
   // return (
@@ -91,7 +91,7 @@ const component: React.SFC<Props> = (props: Props) => {
       >
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <IconLabel iconType="access_time" label={'9999-12-31 00:00:00'} />
+            <IconLabel iconType="access_time" label={createdAt} />
             <Typography variant="headline" component="h2">
               {entry.title}
             </Typography>
