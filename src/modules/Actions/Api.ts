@@ -48,7 +48,9 @@ export const getAllEntries = (): ThunkAction<
 > => async (dispatch: Dispatch<Action>) => {
   dispatch(startFetch())
   try {
-    const response = await fetch('http://localhost:3000/entries')
+    const response = await fetch(
+      'https://us-central1-cloud-functions-playground-001.cloudfunctions.net/getEntries'
+    )
     const body = await response.json()
     dispatch(recieveFetch(body))
   } catch (e) {
@@ -66,7 +68,9 @@ export const getEntry = (
 ) => {
   dispatch(startFetch())
   try {
-    const response = await fetch(`http://localhost:3000/entries/${entryId}`)
+    const response = await fetch(
+      `https://us-central1-cloud-functions-playground-001.cloudfunctions.net/getEntries/${entryId}`
+    )
     const body = await response.json()
     dispatch(recieveFetchEntry(body))
   } catch (e) {
