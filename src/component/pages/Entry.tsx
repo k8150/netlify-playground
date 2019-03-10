@@ -69,7 +69,6 @@ const component: React.SFC<Props> = (props: Props) => {
 const lifeCycleFunctions: ReactLifeCycleFunctions<Props, {}> = {
   componentWillMount() {},
   componentDidMount() {
-    console.log(this.props)
     const entryId = this.props.match.params.entryId
     this.props.onLoad(entryId)
   }

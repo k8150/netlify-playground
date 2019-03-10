@@ -11,7 +11,6 @@ const styles = {
   appBar: {},
   title: {
     variant: 'title',
-    flexGrow: 1,
     textDecoration: 'none'
   }
 }

@@ -30,6 +30,7 @@ const component: React.SFC<Props> = (props: Props) => {
       <Header />
       <main className={classes.container}>
         <h1>About</h1>
+        <p>coming soon...</p>
       </main>
       <Footer />
     </div>

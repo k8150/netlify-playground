@@ -1,26 +1,35 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles, createStyles } from '@material-ui/core/styles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
-import SvgIcon from '@material-ui/core/SvgIcon'
 import IconLabel from '../molecules/IconLabel'
 
 // TODO:
-const styles = {
-  card: {
-    maxWidth: '100%'
-  },
-  entryCardActionArea: {
-    width: '100%'
-  },
-  media: {
-    minHeight: 140
-  }
-}
+const styles = (theme: Theme) =>
+  createStyles({
+    card: {
+      display: 'flex'
+    },
+    details: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    content: {
+      flex: '1 0 auto'
+    },
+    cover: {
+      width: 151
+    },
+    controls: {
+      display: 'flex',
+      alignItems: 'left'
+    }
+  })
 
 type Props = {
   classes: {
@@ -47,23 +56,47 @@ const component: React.SFC<Props> = (props: Props) => {
   // const createdAt = entry.created_at.toISOString()
   const url = `/entry/${entry.id}`
 
+  // return (
+  //   <Card className={classes.card}>
+  //     <CardActionArea
+  //       className={classes.entryCardActionArea}
+  //       component={({ innerRef, ...props }) => <Link {...props} to={url} />}
+  //     >
+  //       <CardMedia
+  //         className={classes.media}
+  //         image={entry.title_image_url}
+  //         title=""
+  //       />
+  //       <CardContent>
+  //         <IconLabel iconType="access_time" label={'9999-12-31 00:00:00'} />
+  //         <Typography variant="headline" component="h2">
+  //           {entry.title}
+  //         </Typography>
+  //       </CardContent>
+  //     </CardActionArea>
+  //   </Card>
+  // )
+
   return (
     <Card className={classes.card}>
-      <CardActionArea
-        className={classes.entryCardActionArea}
-        component={({ innerRef, ...props }) => <Link {...props} to={url} />}
-      >
+      <div className={classes.controls}>
         <CardMedia
-          className={classes.media}
+          className={classes.cover}
           image={entry.title_image_url}
           title=""
         />
-        <CardContent>
-          <IconLabel iconType="access_time" label={'9999-12-31 00:00:00'} />
-          <Typography variant="headline" component="h2">
-            {entry.title}
-          </Typography>
-        </CardContent>
+      </div>
+      <CardActionArea
+        component={({ innerRef, ...props }) => <Link {...props} to={url} />}
+      >
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <IconLabel iconType="access_time" label={'9999-12-31 00:00:00'} />
+            <Typography variant="headline" component="h2">
+              {entry.title}
+            </Typography>
+          </CardContent>
+        </div>
       </CardActionArea>
     </Card>
   )
