@@ -4,8 +4,9 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack",
-    "deploy": "webpack; cp -a ./dist/* /var/www/html/"
+    "develop": "webpack --mode development; cp -a ./dist/* /var/www/html/",
+    "build": "webpack --mode production",
+    "deploy": "webpack --mode production; cp -a ./dist/* /var/www/html/"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.7.0",
+    "moment": "^2.24.0",
     "prettier": "^1.15.3",
     "react-router-dom": "^4.3.1",
     "remark": "^10.0.1",
