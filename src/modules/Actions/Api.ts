@@ -62,14 +62,14 @@ export const getAllEntries = (): ThunkAction<
  * 記事取得API
  */
 export const getEntry = (
-  entryId: number
+  entryId: string
 ): ThunkAction<void, RootState, undefined, RootActions> => async (
   dispatch: Dispatch<Action>
 ) => {
   dispatch(startFetch())
   try {
     const response = await fetch(
-      `https://us-central1-cloud-functions-playground-001.cloudfunctions.net/getEntries/${entryId}`
+      `https://us-central1-cloud-functions-playground-001.cloudfunctions.net/getEntry/${entryId}`
     )
     const body = await response.json()
     dispatch(recieveFetchEntry(body))

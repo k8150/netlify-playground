@@ -7,6 +7,7 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+import * as moment from 'moment'
 import IconLabel from '../molecules/IconLabel'
 
 // TODO:
@@ -36,12 +37,18 @@ type Props = {
     [key: string]: string
   }
   entry: {
-    id?: number
+    id?: string
     title: string
     title_image_url: string
     content: string
-    created_at: Date
-    updated_at: Date
+    created_at: {
+      _second: number
+      _nanoseconds: number
+    }
+    updated_at: {
+      _second: number
+      _nanoseconds: number
+    }
   }
 }
 
@@ -53,29 +60,8 @@ type Props = {
  */
 const component: React.SFC<Props> = (props: Props) => {
   const { classes, entry } = props
-  const createdAt = entry.created_at.toISOString()
+  const createdAt = moment(entry.created_at._second)
   const url = `/entry/${entry.id}`
-
-  // return (
-  //   <Card className={classes.card}>
-  //     <CardActionArea
-  //       className={classes.entryCardActionArea}
-  //       component={({ innerRef, ...props }) => <Link {...props} to={url} />}
-  //     >
-  //       <CardMedia
-  //         className={classes.media}
-  //         image={entry.title_image_url}
-  //         title=""
-  //       />
-  //       <CardContent>
-  //         <IconLabel iconType="access_time" label={'9999-12-31 00:00:00'} />
-  //         <Typography variant="headline" component="h2">
-  //           {entry.title}
-  //         </Typography>
-  //       </CardContent>
-  //     </CardActionArea>
-  //   </Card>
-  // )
 
   return (
     <Card className={classes.card}>
@@ -91,7 +77,10 @@ const component: React.SFC<Props> = (props: Props) => {
       >
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <IconLabel iconType="access_time" label={createdAt} />
+            <IconLabel
+              iconType="access_time"
+              label={createdAt.format('YYYY/MM/DD HH:mm:ss')}
+            />
             <Typography variant="headline" component="h2">
               {entry.title}
             </Typography>

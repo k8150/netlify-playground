@@ -41,12 +41,18 @@ export type GetAllEntriesState = {
   error?: string
   entries: [
     {
-      id?: number
+      id?: string
       title: string
       title_image_url: string
       content: string
-      created_at: Date
-      updated_at: Date
+      created_at: {
+        _second: number
+        _nanoseconds: number
+      }
+      updated_at: {
+        _second: number
+        _nanoseconds: number
+      }
     }
   ]
   onLoad: () => void
@@ -56,12 +62,18 @@ export type GetEntryState = {
   onFetch: boolean
   error?: string
   entry: {
-    id?: number
+    id?: string
     title: string
     title_image_url: string
     content: string
-    created_at: Date
-    updated_at: Date
+    created_at: {
+      _second: number
+      _nanoseconds: number
+    }
+    updated_at: {
+      _second: number
+      _nanoseconds: number
+    }
   }
-  onLoad: (entryId: number) => void
+  onLoad: (entryId: string) => void
 }

@@ -31,18 +31,24 @@ type StateProps = {
   error?: string | null
   [key: string]: any
   entry: {
-    id?: number
+    id?: string
     title: string
     title_image_url: string
     content: string
-    created_at: Date
-    updated_at: Date
+    created_at: {
+      _second: number
+      _nanoseconds: number
+    }
+    updated_at: {
+      _second: number
+      _nanoseconds: number
+    }
   }
-  onLoad: (entryId: number) => void
+  onLoad: (entryId: string) => void
 }
 
 type DispatchProps = {
-  onLoad: (entryId: number) => void
+  onLoad: (entryId: string) => void
 }
 
 type Props = ClassProps & StateProps & DispatchProps
@@ -83,7 +89,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<RootState, undefined, RootActions>
 ): DispatchProps => ({
-  onLoad: (entryId: number) => {
+  onLoad: (entryId: string) => {
     dispatch(actionCreator.api.getEntry(entryId))
   }
 })

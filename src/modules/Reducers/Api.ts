@@ -15,8 +15,14 @@ export const getAllEntriesReducer = (
         title: '',
         title_image_url: '',
         content: '',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: {
+          _second: 0,
+          _nanoseconds: 0
+        },
+        updated_at: {
+          _second: 0,
+          _nanoseconds: 0
+        }
       }
     ],
     error: 'Please fetch.',
@@ -57,11 +63,17 @@ export const getEntryReducer = (
       title: '',
       title_image_url: '',
       content: '',
-      created_at: new Date(),
-      updated_at: new Date()
+      created_at: {
+        _second: 0,
+        _nanoseconds: 0
+      },
+      updated_at: {
+        _second: 0,
+        _nanoseconds: 0
+      }
     },
     error: '',
-    onLoad: (entryId: number) => {}
+    onLoad: (entryId: string) => {}
   },
   action: ApiActions
 ) => {

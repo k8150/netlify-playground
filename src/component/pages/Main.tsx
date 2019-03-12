@@ -30,12 +30,18 @@ type StateProps = {
   error?: string
   entries: [
     {
-      id?: number
+      id?: string
       title: string
       title_image_url: string
       content: string
-      created_at: Date
-      updated_at: Date
+      created_at: {
+        _second: number
+        _nanoseconds: number
+      }
+      updated_at: {
+        _second: number
+        _nanoseconds: number
+      }
     }
   ]
   onLoad: () => void
