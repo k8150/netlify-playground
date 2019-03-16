@@ -16,11 +16,11 @@ export const getAllEntriesReducer = (
         title_image_url: '',
         content: '',
         created_at: {
-          _second: 0,
+          _seconds: 0,
           _nanoseconds: 0
         },
         updated_at: {
-          _second: 0,
+          _seconds: 0,
           _nanoseconds: 0
         }
       }
@@ -64,11 +64,11 @@ export const getEntryReducer = (
       title_image_url: '',
       content: '',
       created_at: {
-        _second: 0,
+        _seconds: 0,
         _nanoseconds: 0
       },
       updated_at: {
-        _second: 0,
+        _seconds: 0,
         _nanoseconds: 0
       }
     },

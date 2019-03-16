@@ -42,11 +42,11 @@ type Props = {
     title_image_url: string
     content: string
     created_at: {
-      _second: number
+      _seconds: number
       _nanoseconds: number
     }
     updated_at: {
-      _second: number
+      _seconds: number
       _nanoseconds: number
     }
   }
@@ -60,7 +60,7 @@ type Props = {
  */
 const component: React.SFC<Props> = (props: Props) => {
   const { classes, entry } = props
-  const createdAt = moment(entry.created_at._second)
+  const createdAt = moment.unix(entry.created_at._seconds)
   const url = `/entry/${entry.id}`
 
   return (

@@ -35,11 +35,11 @@ type StateProps = {
       title_image_url: string
       content: string
       created_at: {
-        _second: number
+        _seconds: number
         _nanoseconds: number
       }
       updated_at: {
-        _second: number
+        _seconds: number
         _nanoseconds: number
       }
     }
