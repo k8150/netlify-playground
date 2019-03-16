@@ -6,6 +6,7 @@ import {
   RootState
 } from '../Types'
 import { ThunkAction } from 'redux-thunk'
+import env from '../../environment'
 
 /**
  * APIリクエスト開始
@@ -48,9 +49,7 @@ export const getAllEntries = (): ThunkAction<
 > => async (dispatch: Dispatch<Action>) => {
   dispatch(startFetch())
   try {
-    const response = await fetch(
-      'https://us-central1-cloud-functions-playground-001.cloudfunctions.net/getEntries'
-    )
+    const response = await fetch(`${env.API_ORIGIN}/getEntries`)
     const body = await response.json()
     dispatch(recieveFetch(body))
   } catch (e) {
@@ -68,9 +67,7 @@ export const getEntry = (
 ) => {
   dispatch(startFetch())
   try {
-    const response = await fetch(
-      `https://us-central1-cloud-functions-playground-001.cloudfunctions.net/getEntry/${entryId}`
-    )
+    const response = await fetch(`${env.API_ORIGIN}/getEntry/${entryId}`)
     const body = await response.json()
     dispatch(recieveFetchEntry(body))
   } catch (e) {

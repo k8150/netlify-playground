@@ -4,9 +4,9 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "develop": "webpack --mode development; cp -a ./dist/* /var/www/html/",
-    "build": "webpack --mode production",
-    "deploy": "webpack --mode production; cp -a ./dist/* /var/www/html/"
+    "develop": "NODE_ENV=development webpack --mode development; cp -a ./dist/* /var/www/html/",
+    "deploy": "NODE_ENV=production webpack --mode production; cp -a ./dist/* /var/www/html/",
+    "build": "NODE_ENV=production webpack --mode production"
   },
   "repository": {
     "type": "git",
